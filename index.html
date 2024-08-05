@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Fornecedor/Produto</title>
+    <link rel="stylesheet" type="text/css" href="https://fluig.totvs.com/style-guide/css/fluig-style-guide.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://fluig.totvs.com/portal/resources/js/mustache/mustache-min.js"></script>
+    <script src="https://fluig.totvs.com/style-guide/js/fluig-style-guide.min.js"></script>
+
+</head>
+</head>
+
+<body>
+    <div class="fluig-style-guide">
+        <h2 class="center-block text-center">CADASTRO FORNECEDOR/PRODUTO</h2>
+        <form id="formFornecedor" role="form">
+            <div class="row form">
+                <h3 class="header-form">Dados do Fornecedor</h3>
+                <div>
+                    <div class="form-group col-md-7 col-xs-12">
+                        <label for="inputRazaoSocial">Razão Social</label>
+                        <input required type="text" class="form-control" id="inputRazaoSocial"
+                            placeholder="Razão Social">
+                    </div>
+                    <div class="form-group col-md-5 col-xs-12">
+                        <label for="inputCnpj">CNPJ</label>
+                        <input required type="text" class="form-control" id="inputCnpj" placeholder="XX.XXX.XXX/YYYY-ZZ"
+                            minlength="14" maxlength="14">
+                    </div>
+                    <div class="form-group col-md-7 col-xs-12">
+                        <label for="inputNomeFantasia"> Nome Fantasia</label>
+                        <input required type="text" class="form-control" id="inputNomeFantasia"
+                            placeholder="Nome Fantasia">
+                    </div>
+                    <div class="form-group col-md-5 col-xs-12">
+                        <label for="inputInscricaoEstadual">Inscrição Estadual</label>
+                        <input type="text" class="form-control" id="inputInscricaoEstadual"
+                            placeholder="Inscrição Estadual">
+                    </div>
+                    <div class="form-group col-md-4 col-xs-12">
+                        <label for="inputCEP">CEP</label>
+                        <input required type="text" class="form-control" id="inputCEP" placeholder="Apenas números"
+                            minlength="8" maxlength="8">
+                    </div>
+                    <div class="form-group col-md-5  col-md-offset-3 col-xs-12">
+                        <label for="inputInscricaoMunicipal">Inscrição Municipal</label>
+                        <input type="text" class="form-control" id="inputInscricaoMunicipal"
+                            placeholder="Inscrição Municipal">
+                    </div>
+                    <div class="form-group col-md-7 col-xs-12">
+                        <label for="inputEndereco">Endereço</label>
+                        <input accept="false" disabled required type="text" class="form-control" id="inputEndereco"
+                            placeholder="Cep">
+                    </div>
+                    <div class="form-group col-md-5 col-xs-12">
+                        <label for="inputNumero">Número</label>
+                        <input required type="text" class="form-control" id="inputNumero"
+                            placeholder="Número">
+                    </div>
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label for="inputComplemento">Complemento</label>
+                        <input required type="text" class="form-control" id="inputComplemento"
+                            placeholder="Complemento">
+                    </div>
+                    <div class="form-group col-md-5 col-xs-12">
+                        <label for="inputBairro">Bairro</label>
+                        <input disabled type="text" class="form-control" id="inputBairro" placeholder="Bairro">
+                    </div>
+                    <div class="form-group col-md-4 col-xs-12">
+                        <label for="inputMunicipio">Município</label>
+                        <input disabled type="text" class="form-control" id="inputMunicipio" placeholder="Município">
+                    </div>
+                    <div class="form-group col-md-3 col-xs-12">
+                        <label for="inputEstado">Estado</label>
+                        <input disabled type="text" class="form-control" id="inputEstado" placeholder="Estado">
+
+                    </div>
+                    <div class="form-group col-md-6 col-xs-12">
+                        <label for="inputNomeContato">Nome da pessoa de contato</label>
+                        <input required type="text" class="form-control" id="inputNomeContato"
+                            placeholder="Insira o Nome Completo">
+                    </div>
+                    <div class="form-group col-md-3 col-xs-12">
+                        <label for="inputTelefone">Telefone</label>
+                        <input type="tel" class="form-control" id="inputTelefone" placeholder="(xx) x xxxx-xxxx"
+                            minlength="11" maxlength="11">
+                    </div>
+                    <div class="form-group col-md-3 col-xs-12">
+                        <label for="inputEmail" class="col-sm-2 control-label">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+            </div>
+            <div class="row form">
+                <h3 class="header-form">Produtos</h3>
+                <div id="produtos"></div>
+                <button id="btn-fornecedor" class="btn btn-success btn-lg">Adicionar Produtos</button>
+            </div>
+            <div class="row form ">
+                <h3 class="header-form">Anexos</h3>
+                <div class="table-datatable fs-display-flex-collum fs-align-items-center" id="anexos-container"></div>
+                <label for="inputAnexos" id="btn-file" class="btn btn-success btn-lg">Incluir Anexos</label>
+                <input type="file" id="inputAnexos" name="inputAnexos" class="btn btn-success btn-lg fs-display-none"
+                    multiple>
+            </div>
+            <button type="submit" id="btn-coletar-valores" class="btn btn-success btn-lg">Salvar Fornecedor</button>
+        </form>
+    </div>
+
+    <script src="js/index.js"></script>
+    <script src="js/events/cepEvents.js"></script>
+</body>
+
+</html>
